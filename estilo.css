@@ -22,7 +22,16 @@ body{
     padding: 0 10%;
 }
 
-@media(min-width: 375px){
+.titulo {
+    display: inline-block;
+    padding-right: 50%;
+}
+
+#mudaLayout {
+    display: none;
+}
+
+@media(min-width: 560px){
     .mural{
         text-align: center;
         display: flex;
@@ -38,6 +47,10 @@ body{
         width: auto;
         flex-basis: 190px;
     
+    }
+    
+    #mudaLayout {
+        display: inline-block;
     }
     
     .cartao{
