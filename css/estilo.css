@@ -18,6 +18,12 @@ body{
     background: #ebef40;
 }
 
+.cartao--sumindo{
+    opacity: 0;
+    transition: .2s ease-in;
+    
+}
+
 .container{
     padding: 0 10%;
 }

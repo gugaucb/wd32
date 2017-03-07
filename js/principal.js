@@ -29,6 +29,9 @@ for(var i=0; i<botoesRemove.length;i++){
         var idCartao = 'cartao_' + botao.dataset.cartao;
         
         var cartao = document.querySelector('#'+idCartao);
-        cartao.remove();
+        cartao.classList.add('cartao--sumindo');
+        setTimeout(function(){
+            cartao.remove();
+        },400);
     });
 }
