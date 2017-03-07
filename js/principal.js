@@ -25,7 +25,8 @@ for(var i=0; i<botoesRemove.length;i++){
     var botaoRemove = botoesRemove[i];
     botaoRemove.addEventListener('click', function(){
         //this.parentNode.parentNode.remove();
-        var idCartao = 'cartao_' + this.getAttribute('data-cartao');
+        var botao = this;
+        var idCartao = 'cartao_' + botao.dataset.cartao;
         
         var cartao = document.querySelector('#'+idCartao);
         cartao.remove();
