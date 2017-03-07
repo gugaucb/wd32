@@ -12,24 +12,10 @@ body{
     padding-top: 8px;
 }
 
-.cartao--master{
-    display: flex;
-    flex-direction: column;
-    background: #ebef40;
-    margin: 16px;
-    padding: 0px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        
-}
 .cartao{
-     margin: 12px;
-    padding: 8px;
-   
-}
-
-.cartao--hr { 
- 	border-top: 1px dotted #8c8b8b;
-	border-bottom: 1px dotted #ebef40;
+    margin: 16px;
+    padding: 16px;
+    background: #ebef40;
 }
 
 .container{
@@ -39,30 +25,6 @@ body{
 .titulo {
     display: inline-block;
     padding-right: 50%;
-}
-
-.rodape{
-    max-height: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    flex-direction: row;
-    align-self: flex-end;
-}
-
-.rodape--item--esquerdo{
-    padding-left:1%;
-    text-align: left;
-    font-size: smaller;
-    width: 49%;
-   
-}
-.rodape--item--direito{
-    padding-right:1%;
-    text-align: right;
-    font-size: small;
-    width: 49%;
-    f
 }
 
 #mudaLayout {
@@ -91,7 +53,7 @@ body{
         display: inline-block;
     }
     
-    .cartao--master{
+    .cartao{
         width: 190px;
         display: inline-block;
         text-align: left;

@@ -1,5 +1,7 @@
 var botao = document.querySelector('#mudaLayout');
 var mural = document.querySelector('.mural');
+var botoesRemove = document.querySelectorAll('.opcoesDoCartao-remove');
+
 
 botao.addEventListener('click', mudaLayout);
 botao.addEventListener('click', mudaLabelBotao);
@@ -17,3 +19,12 @@ function mudaLabelBotao(){
 function mudaLayout(){
     mural.classList.toggle('mural--linhas');
 };
+
+
+for(var i=0; i<botoesRemove.length;i++){
+    var botaoRemove = botoesRemove[i];
+    botaoRemove.addEventListener('click', function(){
+        this.parentNode.parentNode.remove();
+    
+    });
+}
