@@ -24,7 +24,10 @@ function mudaLayout(){
 for(var i=0; i<botoesRemove.length;i++){
     var botaoRemove = botoesRemove[i];
     botaoRemove.addEventListener('click', function(){
-        this.parentNode.parentNode.remove();
-    
+        //this.parentNode.parentNode.remove();
+        var idCartao = 'cartao_' + this.getAttribute('data-cartao');
+        
+        var cartao = document.querySelector('#'+idCartao);
+        cartao.remove();
     });
 }
