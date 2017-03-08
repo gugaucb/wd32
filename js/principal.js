@@ -41,16 +41,22 @@ formulario.addEventListener('submit', salvaNovoCarta);
 function salvaNovoCarta(evento){ 
     evento.preventDefault();
     var campoConteudo = document.querySelector('.novoCartao-conteudo');
-    var mural = document.querySelector('.mural');
-    //var campoConteudo = document.querySelector('[name=novoCartao-conteudo]');
     var digitado = campoConteudo.value;
-    var conteudoNovoCartao= document.createElement('p');
-    conteudoNovoCartao.textContent  = digitado;
-    conteudoNovoCartao.classList.add('cartao-conteudo');
-    
-    var novoCartao = document.createElement('div');
-    novoCartao.classList.add('cartao');
-    
-    novoCartao.appendChild(conteudoNovoCartao);
-    mural.insertBefore(novoCartao, mural.firstElementChild);
+    if(digitado.length>0){
+      
+        var mural = document.querySelector('.mural');
+        //var campoConteudo = document.querySelector('[name=novoCartao-conteudo]');
+        
+        var conteudoNovoCartao= document.createElement('p');
+        conteudoNovoCartao.textContent  = digitado;
+        conteudoNovoCartao.classList.add('cartao-conteudo');
+
+        var novoCartao = document.createElement('div');
+        novoCartao.classList.add('cartao');
+
+        novoCartao.appendChild(conteudoNovoCartao);
+        mural.insertBefore(novoCartao, mural.firstElementChild);
+        campoConteudo.value = '';
+        campoConteudo.focus();
+    }
 }
