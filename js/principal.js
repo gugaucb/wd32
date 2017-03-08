@@ -27,9 +27,10 @@ $('.opcoesDoCartao-remove').click(removeCartao);
 function removeCartao(){
         //this.parentNode.parentNode.remove();
         var botao = $(this);
-        var idCartao = 'cartao_' + botao.data('cartao');
+      //  var idCartao = 'cartao_' + botao.data('cartao');
         
-        var cartao = $('#'+idCartao).addClass('cartao--sumindo');
+        //var cartao = $('#'+idCartao).addClass('cartao--sumindo');
+        var cartao = botao.closest('.cartao').addClass('cartao--sumindo');
         setTimeout(function(){
             cartao.remove();
         },400);
