@@ -21,42 +21,40 @@ function mudaLayout(){
 };
 
 
-for(var i=0; i<botoesRemove.length;i++){
-    var botaoRemove = botoesRemove[i];
-    botaoRemove.addEventListener('click', function(){
+$('.opcoesDoCartao-remove').click(removeCartao);
+
+                                 
+function removeCartao(){
         //this.parentNode.parentNode.remove();
-        var botao = this;
-        var idCartao = 'cartao_' + botao.dataset.cartao;
+        var botao = $(this);
+        var idCartao = 'cartao_' + botao.data('cartao');
         
-        var cartao = document.querySelector('#'+idCartao);
-        cartao.classList.add('cartao--sumindo');
+        var cartao = $('#'+idCartao).addClass('cartao--sumindo');
         setTimeout(function(){
             cartao.remove();
         },400);
-    });
-}
+    }
 
-formulario.addEventListener('submit', salvaNovoCarta);
-                            
+$('.novoCartao').submit(salvaNovoCarta);
+ 
+ var numeroDeCartoes = $('.cartao').length;
+
 function salvaNovoCarta(evento){ 
     evento.preventDefault();
-    var campoConteudo = document.querySelector('.novoCartao-conteudo');
-    var digitado = campoConteudo.value;
-    if(digitado.length>0){
-      
-        var mural = document.querySelector('.mural');
-        //var campoConteudo = document.querySelector('[name=novoCartao-conteudo]');
+    
+    
+    var campoConteudo = $('.novoCartao-conteudo');
+    var digitado = campoConteudo.val();
+    if(digitado){
+     numeroDeCartoes++;
+        var novoCartao = $('<div>').addClass('cartao').attr('id', 'cartao_'+(numeroDeCartoes+1)) ;
         
-        var conteudoNovoCartao= document.createElement('p');
-        conteudoNovoCartao.textContent  = digitado;
-        conteudoNovoCartao.classList.add('cartao-conteudo');
-
-        var novoCartao = document.createElement('div');
-        novoCartao.classList.add('cartao');
-
-        novoCartao.appendChild(conteudoNovoCartao);
-        mural.insertBefore(novoCartao, mural.firstElementChild);
-        campoConteudo.value = '';
-        campoConteudo.focus();
+        var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
+        
+        $('<button>').addClass('opcoesDoCartao-opcao opcoesDoCartao-remove').text('Remove').appendTo(opcoesDoCartao).data('cartao',numeroDeCartoes+1).click(removeCartao);
+        
+        $('<p>').text(digitado).addClass('cartao-conteudo').appendTo(novoCartao);
+        novoCartao.prependTo('.mural');
+        campoConteudo.val('').focus();
     }
 }
