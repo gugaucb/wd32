@@ -1,7 +1,7 @@
 var botao = document.querySelector('#mudaLayout');
 var mural = document.querySelector('.mural');
 var botoesRemove = document.querySelectorAll('.opcoesDoCartao-remove');
-
+var formulario = document.querySelector('.novoCartao');
 
 botao.addEventListener('click', mudaLayout);
 botao.addEventListener('click', mudaLabelBotao);
@@ -34,4 +34,23 @@ for(var i=0; i<botoesRemove.length;i++){
             cartao.remove();
         },400);
     });
+}
+
+formulario.addEventListener('submit', salvaNovoCarta);
+                            
+function salvaNovoCarta(evento){ 
+    evento.preventDefault();
+    var campoConteudo = document.querySelector('.novoCartao-conteudo');
+    var mural = document.querySelector('.mural');
+    //var campoConteudo = document.querySelector('[name=novoCartao-conteudo]');
+    var digitado = campoConteudo.value;
+    var conteudoNovoCartao= document.createElement('p');
+    conteudoNovoCartao.textContent  = digitado;
+    conteudoNovoCartao.classList.add('cartao-conteudo');
+    
+    var novoCartao = document.createElement('div');
+    novoCartao.classList.add('cartao');
+    
+    novoCartao.appendChild(conteudoNovoCartao);
+    mural.insertBefore(novoCartao, mural.firstElementChild);
 }
