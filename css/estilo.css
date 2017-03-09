@@ -71,13 +71,19 @@ body{
     
     .cartao--textoGrande{
         font-size: 2em;
+        width: 6em;
+        flex-basis: 6em;
     }
     
     .cartao--textoMedio{
         font-size: 1.5em;
+        width: 9em;
+        flex-basis: 9em;
     }
     
     .cartao--textoPequeno{
         font-size: 1em;
+        width: 11em;
+        flex-basis: 11em;
     }
 }

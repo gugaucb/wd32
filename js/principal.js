@@ -47,8 +47,10 @@ function salvaNovoCarta(evento){
     var campoConteudo = $('.novoCartao-conteudo');
     var digitado = campoConteudo.val().trim().replace(/\n/g,'<br>');
     if(digitado){
-     numeroDeCartoes++;
-        var novoCartao = $('<div>').addClass('cartao').attr('id', 'cartao_'+(numeroDeCartoes+1)) ;
+       var tipoCartao = decideTipoCartao(digitado)
+        
+        numeroDeCartoes++;
+        var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)) ;
         
         var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
         
@@ -59,4 +61,35 @@ function salvaNovoCarta(evento){
         
     }
     campoConteudo.val('').focus();
+}
+
+function decideTipoCartao(digitado){
+    console.time('decideTipoCartao');
+    //quebras de linhas
+    var quebras = digitado.split('<br>').length-1;
+    
+    
+    //total de letras
+    var letras = digitado.replace(/<br>| /g,'').length;
+    
+    //tamanho da maior palavra
+    var maiorPalavra = '';
+    var palavras = digitado.replace(/(<br>| )+/g, ' ').split(' ');
+    for(var i=0; i < palavras.length; i++){
+        var palavra = palavras[i];
+        if(palavra.length > maiorPalavra.length){
+            maiorPalavra = palavra;
+        }
+    }
+    
+    if(quebras < 5 && letras < 55 && maiorPalavra.length < 9){
+        return 'cartao--textoGrande';
+    }else if(quebras < 6 && letras < 75 && maiorPalavra.length < 12){
+        return 'cartao--textoMedio';
+    }else{
+        return 'cartao--textoPequeno';
+    }
+  
+    
+    console.timeEnd('decideTipoCartao');
 }
