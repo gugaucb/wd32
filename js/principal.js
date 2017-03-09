@@ -45,7 +45,7 @@ function salvaNovoCarta(evento){
     
     
     var campoConteudo = $('.novoCartao-conteudo');
-    var digitado = campoConteudo.val();
+    var digitado = campoConteudo.val().trim().replace(/\n/g,'<br>');
     if(digitado){
      numeroDeCartoes++;
         var novoCartao = $('<div>').addClass('cartao').attr('id', 'cartao_'+(numeroDeCartoes+1)) ;
@@ -54,8 +54,9 @@ function salvaNovoCarta(evento){
         
         $('<button>').addClass('opcoesDoCartao-opcao opcoesDoCartao-remove').text('Remove').appendTo(opcoesDoCartao).data('cartao',numeroDeCartoes+1).click(removeCartao);
         
-        $('<p>').text(digitado).addClass('cartao-conteudo').appendTo(novoCartao);
+        $('<p>').html(digitado).addClass('cartao-conteudo').appendTo(novoCartao);
         novoCartao.prependTo('.mural');
-        campoConteudo.val('').focus();
+        
     }
+    campoConteudo.val('').focus();
 }

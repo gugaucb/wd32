@@ -68,4 +68,16 @@ body{
         flex-grow: 1;
         flex-basis: 190px;
     }
+    
+    .cartao--textoGrande{
+        font-size: 2em;
+    }
+    
+    .cartao--textoMedio{
+        font-size: 1.5em;
+    }
+    
+    .cartao--textoPequeno{
+        font-size: 1em;
+    }
 }
