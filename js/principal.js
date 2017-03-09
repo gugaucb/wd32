@@ -75,12 +75,24 @@ function decideTipoCartao(digitado){
     //tamanho da maior palavra
     var maiorPalavra = '';
     var palavras = digitado.replace(/(<br>| )+/g, ' ').split(' ');
-    for(var i=0; i < palavras.length; i++){
-        var palavra = palavras[i];
+//    $.each(palavras, function(){
+//        var palavra = this;
+//         if(palavra.length > maiorPalavra.length){
+//            maiorPalavra = palavra;
+//        }
+//    });
+    
+        palavras.forEach(function(palavra){
         if(palavra.length > maiorPalavra.length){
             maiorPalavra = palavra;
         }
-    }
+    });
+//    for(var i=0; i < palavras.length; i++){
+//        var palavra = palavras[i];
+//        if(palavra.length > maiorPalavra.length){
+//            maiorPalavra = palavra;
+//        }
+//    }
     
     if(quebras < 5 && letras < 55 && maiorPalavra.length < 9){
         return 'cartao--textoGrande';
@@ -89,7 +101,18 @@ function decideTipoCartao(digitado){
     }else{
         return 'cartao--textoPequeno';
     }
-  
+   
     
     console.timeEnd('decideTipoCartao');
 }
+
+$('#busca').on('input', function(){
+    var digitado = $(this).val().trim();
+    
+    var regex = new RegExp(digitado, 'i');
+    
+    $('.cartao').hide().filter(function(){
+        var conteudo = $(this).find('.cartao-conteudo').text();
+        return regex.test(conteudo); 
+    }).show();
+});

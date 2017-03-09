@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Ceep</title>
@@ -10,59 +11,54 @@
     <link rel="stylesheet" href="css/opcoesDoCartao.css">
     <link rel="stylesheet" href="css/novoCartao.css">
     <link rel="stylesheet" href="css/mural.css">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
-</head>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5"> </head>
+
 <body>
     <header class="cabecalho">
         <h1 class="cabecalho-logo">Ceep</h1>
-        <button id="mudaLayout" class="opcoesDaPagina-botao opcoesDaPagina-opcao">Linhas</button>
+        <div class="opcoesDaPagina">
+            <input type="search" name="busca" id="busca" class="opcoesDaPagina-opcao" placeholder="busca">
+            <button id="mudaLayout" class="opcoesDaPagina-botao opcoesDaPagina-opcao">Linhas</button>
+        </div>
     </header>
     <form class="container novoCartao">
         <textarea name="novoCartao-conteudo" class="novoCartao-conteudo" placeholder="Digite aqui"></textarea>
-        <input type="submit" value="Salvar" class="novoCartao-salvar">
-    </form>
+        <input type="submit" value="Salvar" class="novoCartao-salvar"> </form>
     <section class="container mural">
-      
-           <div class="cartao" id="cartao_1">
-              <div class="opcoesDoCartao">
-               <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="1">remove</button>
-           </div>
-                 <p class="cartao-conteudo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, labore. Aperiam praesentium rem quos ad adipisci dignissimos laudantium eum incidunt, quod perspiciatis tenetur officiis tempore, repellendus, quae voluptatum libero corporis!</p>
+        <div class="cartao" id="cartao_1">
+            <div class="opcoesDoCartao">
+                <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="1">remove</button>
             </div>
-           
-      
-            <div class="cartao" id="cartao_2">
-               <div class="opcoesDoCartao">
-               <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="2">remove</button>
-                </div>
-                <p class="cartao-conteudo">Provident atque dolore suscipit. Suscipit fugit veritatis aliquam. Non, accusamus. Est ab voluptates, consequatur ullam. Dolorem accusamus et earum. Quia sapiente commodi reiciendis reprehenderit sunt nam qui placeat illum ea.</p>
+            <p class="cartao-conteudo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, labore. Aperiam praesentium rem quos ad adipisci dignissimos laudantium eum incidunt, quod perspiciatis tenetur officiis tempore, repellendus, quae voluptatum libero corporis!</p>
+        </div>
+        <div class="cartao" id="cartao_2">
+            <div class="opcoesDoCartao">
+                <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="2">remove</button>
             </div>
-        
-          
-            <div class="cartao" id="cartao_3">
-               <div class="opcoesDoCartao">
-               <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="3">remove</button>
-                </div>
-                <p class="cartao-conteudo">Provident ex error fugiat veniam atque aliquid asperiores est rem quae, perspiciatis quo mollitia exercitationem maiores dicta repudiandae, ab inventore, consequatur doloribus architecto doloremque. Ab, amet debitis quo vel? Minima.</p>
+            <p class="cartao-conteudo">Provident atque dolore suscipit. Suscipit fugit veritatis aliquam. Non, accusamus. Est ab voluptates, consequatur ullam. Dolorem accusamus et earum. Quia sapiente commodi reiciendis reprehenderit sunt nam qui placeat illum ea.</p>
+        </div>
+        <div class="cartao" id="cartao_3">
+            <div class="opcoesDoCartao">
+                <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="3">remove</button>
             </div>
-           
-            <div class="cartao" id="cartao_4">
-               <div class="opcoesDoCartao">
-               <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="4">remove</button>
-                </div>
-                <p class="cartao-conteudo">Aut eaque quae, animi exercitationem dolorum quod eveniet quibusdam! Ad molestias at rem veniam est pariatur ducimus reiciendis. Fuga mollitia, unde quas esse autem asperiores quidem ipsa quia voluptatum culpa.</p>
+            <p class="cartao-conteudo">Provident ex error fugiat veniam atque aliquid asperiores est rem quae, perspiciatis quo mollitia exercitationem maiores dicta repudiandae, ab inventore, consequatur doloribus architecto doloremque. Ab, amet debitis quo vel? Minima.</p>
+        </div>
+        <div class="cartao" id="cartao_4">
+            <div class="opcoesDoCartao">
+                <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="4">remove</button>
             </div>
-           
-            <div class="cartao" id="cartao_5">
-               <div class="opcoesDoCartao">
-               <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="5">remove</button>
-                </div>
-                <p class="cartao-conteudo">Alias eos placeat debitis architecto, esse, earum porro consequuntur omnis aperiam, nisi ratione ipsa aut fuga! Consequuntur ut laborum sapiente optio iusto necessitatibus iure molestiae cum dolores unde repudiandae, minus.</p>
+            <p class="cartao-conteudo">Aut eaque quae, animi exercitationem dolorum quod eveniet quibusdam! Ad molestias at rem veniam est pariatur ducimus reiciendis. Fuga mollitia, unde quas esse autem asperiores quidem ipsa quia voluptatum culpa.</p>
+        </div>
+        <div class="cartao" id="cartao_5">
+            <div class="opcoesDoCartao">
+                <button class="opcoesDoCartao-opcao opcoesDoCartao-remove" data-cartao="5">remove</button>
             </div>
-            
+            <p class="cartao-conteudo">Alias eos placeat debitis architecto, esse, earum porro consequuntur omnis aperiam, nisi ratione ipsa aut fuga! Consequuntur ut laborum sapiente optio iusto necessitatibus iure molestiae cum dolores unde repudiandae, minus.</p>
+        </div>
         </div>
     </section>
     <script src="js/jquery.js"></script>
     <script src="js/principal.js"></script>
 </body>
+
 </html>
