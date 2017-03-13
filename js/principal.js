@@ -47,21 +47,28 @@ function salvaNovoCarta(evento){
     
     var campoConteudo = $('.novoCartao-conteudo');
     var digitado = campoConteudo.val().trim().replace(/\n/g,'<br>');
-    if(digitado){
-       var tipoCartao = decideTipoCartao(digitado)
-        
-        numeroDeCartoes++;
-        var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)) ;
-        
-        var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
-        
-        $('<button>').addClass('opcoesDoCartao-opcao opcoesDoCartao-remove').text('Remove').appendTo(opcoesDoCartao).data('cartao',numeroDeCartoes+1).click(removeCartao);
-        
-        $('<p>').html(digitado).addClass('cartao-conteudo').appendTo(novoCartao);
-        novoCartao.prependTo('.mural');
-        
-    }
+    criaCartao(digitado);
     campoConteudo.val('').focus();
+}
+
+function criaCartao(digitado, cor){
+    cor = cor|| 'yellow';   
+    
+    if(digitado){
+               var tipoCartao = decideTipoCartao(digitado)
+
+                numeroDeCartoes++;
+                var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)).css('background-color', cor) ;
+                
+                var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
+
+                $('<button>').addClass('opcoesDoCartao-opcao opcoesDoCartao-remove').text('Remove').appendTo(opcoesDoCartao).data('cartao',numeroDeCartoes+1).click(removeCartao);
+
+                $('<p>').html(digitado).addClass('cartao-conteudo').appendTo(novoCartao);
+                novoCartao.prependTo('.mural');
+
+            }
+
 }
 
 function decideTipoCartao(digitado){
@@ -118,16 +125,17 @@ $('#busca').on('input', function(){
     }).show();
 });
 
-$('#ajuda').click(function (){
+$('#ajuda').one('click', function (){
    console.time('ajax');
-    $.ajax({
-    url: 'http://ceep.herokuapp.com/cartoes/instrucoes',
-    dataType: 'json',
-    method: 'GET',
-    success: function(dados){
-        console.log(dados);
-    }
-   }); 
+    $.get('http://ceep.herokuapp.com/cartoes/instrucoes', 
+        function (dados){
+            console.log(dados);
+            $.each(dados.instrucoes, function (){
+                var cartao = this;
+                console.log(cartao);
+                criaCartao(cartao.conteudo, cartao.cor);
+            })
+        });       
     
     console.timeEnd('ajax');
 });
