@@ -142,7 +142,9 @@ $('#ajuda').one('click', function (){
 
 $('#sync').click(function (){
     console.time('post_ajax');
+    $('#sync').removeClass('botaoSync--deuRuim botaoSync--sincronizado');
     $('#sync').toggleClass('botaoSync--esperando');
+    
     var cartoes = [];
     $('.cartao').each(function(){
         cartao = {}; 
@@ -166,12 +168,17 @@ $('#sync').click(function (){
         data: mural,
         success: function (resposta){
         //sucesso
-             $('#sync').toggleClass('botaoSync--esperando');
+            
              $('#sync').addClass('botaoSync--sincronizado');
             console.log(resposta);
             },
         error: function(){
             $('#sync').addClass('botaoSync--deuRuim');
-        }});
+        },
+        complete: function (){
+             $('#sync').toggleClass('botaoSync--esperando');
+        }
+    });
+    
     console.timeEnd('post_ajax');
 });
