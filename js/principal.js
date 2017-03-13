@@ -139,3 +139,32 @@ $('#ajuda').one('click', function (){
     
     console.timeEnd('ajax');
 });
+
+$('#sync').click(function (){
+    console.time('post_ajax');
+    var cartoes = [];
+    $('.cartao').each(function(){
+        cartao = {}; 
+            
+        cartao.conteudo = $(this).find('.cartao-conteudo').text();
+        cartao.cor = $(this).css('background-color');
+        
+        cartoes.push(cartao);
+        
+    });
+    console.log(cartoes);
+    var mural = {
+        cartoes: cartoes,
+        usuario: 'email@email.com'
+    }
+    
+    $.post('http://ceep.herokuapp.com/cartoes/salvar',mural,
+           function (resposta){
+        //sucesso
+            console.log(resposta);
+            }
+           
+           
+        );
+    console.timeEnd('post_ajax');
+});
