@@ -142,6 +142,7 @@ $('#ajuda').one('click', function (){
 
 $('#sync').click(function (){
     console.time('post_ajax');
+    $('#sync').toggleClass('botaoSync--esperando');
     var cartoes = [];
     $('.cartao').each(function(){
         cartao = {}; 
@@ -158,13 +159,19 @@ $('#sync').click(function (){
         usuario: 'email@email.com'
     }
     
-    $.post('http://ceep.herokuapp.com/cartoes/salvar',mural,
-           function (resposta){
+    $.ajax({
+        
+        url: 'http://ceep.herokuapp.com/cartoes/salvar',
+        method:'POST',
+        data: mural,
+        success: function (resposta){
         //sucesso
+             $('#sync').toggleClass('botaoSync--esperando');
+             $('#sync').addClass('botaoSync--sincronizado');
             console.log(resposta);
-            }
-           
-           
-        );
+            },
+        error: function(){
+            $('#sync').addClass('botaoSync--deuRuim');
+        }});
     console.timeEnd('post_ajax');
 });
