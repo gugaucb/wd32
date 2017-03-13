@@ -3,6 +3,7 @@ var mural = document.querySelector('.mural');
 var botoesRemove = document.querySelectorAll('.opcoesDoCartao-remove');
 var formulario = document.querySelector('.novoCartao');
 
+
 botao.addEventListener('click', mudaLayout);
 botao.addEventListener('click', mudaLabelBotao);
 
@@ -115,4 +116,18 @@ $('#busca').on('input', function(){
         var conteudo = $(this).find('.cartao-conteudo').text();
         return regex.test(conteudo); 
     }).show();
+});
+
+$('#ajuda').click(function (){
+   console.time('ajax');
+    $.ajax({
+    url: 'http://ceep.herokuapp.com/cartoes/instrucoes',
+    dataType: 'json',
+    method: 'GET',
+    success: function(dados){
+        console.log(dados);
+    }
+   }); 
+    
+    console.timeEnd('ajax');
 });
