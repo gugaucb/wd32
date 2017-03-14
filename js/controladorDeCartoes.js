@@ -2,14 +2,14 @@
 var controladorDeCartao = (function(){
 var numeroDeCartoes = $('.cartao').length;
 
-function criaCartao(digitado, cor){
+function criaCartao(digitado, cor, finalidade){
     cor = cor|| 'yellow';   
     
     if(digitado){
                var tipoCartao = decideTipoCartao(digitado)
 
                 numeroDeCartoes++;
-                var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)).css('background-color', cor) ;
+                var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)).data('finalidade', finalidade).css('background-color', cor) ;
                 
                 var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
 
@@ -74,8 +74,11 @@ function removeCartao(){
         //var cartao = $('#'+idCartao).addClass('cartao--sumindo');
         var cartao = botao.closest('.cartao').addClass('cartao--sumindo');
         setTimeout(function(){
+            
+            if(cartao.data('finalidade') != 'ajuda'){
+                $('.mural').trigger('precisaSincronizar');
+            }
             cartao.remove();
-            $('.mural').trigger('precisaSincronizar');
         },400);
     }
 return{

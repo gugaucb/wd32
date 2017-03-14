@@ -7,7 +7,7 @@ $('#ajuda').one('click', function (){
             $.each(dados.instrucoes, function (){
                 var cartao = this;
                 console.log(cartao);
-                cdc.cria(cartao.conteudo, cartao.cor);
+                cdc.cria(cartao.conteudo, cartao.cor, 'ajuda');
             })
         });       
     
