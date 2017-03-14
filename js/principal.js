@@ -177,8 +177,21 @@ $('#sync').click(function (){
         },
         complete: function (){
              $('#sync').toggleClass('botaoSync--esperando');
+            console.timeEnd('post_ajax');
         }
     });
     
-    console.timeEnd('post_ajax');
+    
 });
+
+
+$.getJSON('http://ceep.herokuapp.com/cartoes/carregar?callback=?',
+      {usuario: 'email@email.com'},
+      function (dados) {
+        var cartoes = dados.cartoes;
+        $.each(cartoes, function(){
+            var cartao = this;
+            criaCartao(cartao.conteudo, cartao.cor);
+        })
+      });
+
