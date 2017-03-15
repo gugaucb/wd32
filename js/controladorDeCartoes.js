@@ -1,39 +1,54 @@
 
 var controladorDeCartao = (function(){
-var numeroDeCartoes = $('.cartao').length;
-
-function criaCartao(digitado, cor, finalidade){
-      
-    
-    if(digitado){
-               var tipoCartao = decideTipoCartao(digitado)
-
-                numeroDeCartoes++;
-                var novoCartao = $('<div>').addClass('cartao').addClass(tipoCartao).attr('id', 'cartao_'+(numeroDeCartoes+1)).data('finalidade', finalidade).css('background-color', cor) ;
-                
-                var opcoesDoCartao = $('<div>').addClass('opcoesDoCartao').appendTo(novoCartao);
-               
-
-                $('<button>').addClass('opcoesDoCartao-opcao opcoesDoCartao-remove').text('Remove').appendTo(opcoesDoCartao).data('cartao',numeroDeCartoes+1).click(removeCartao);
-        
-        opcoesDeCoresDoCartao('cartao_'+(numeroDeCartoes+1)).appendTo(opcoesDoCartao);
-        
-                var codigoTimeout;
-                $('<p>').html(digitado)
-                    .addClass('cartao-conteudo')
-                    .appendTo(novoCartao)
-                    .attr('contenteditable',true)
-                    .on('input', function(){
+var numeroDeCartoes = 0;
+var template = $('#cartoes-template').html();
+Mustache.parse(template);
+var codigoTimeout
+$('.mural').on('click','.opcoesDoCartao-remove', removeCartao)
+           .on('input', '.cartao-conteudo', function(){
                         //Debounce Pattern
                         clearTimeout(codigoTimeout);
                         codigoTimeout = setTimeout(function(){
                             $('.mural').trigger('precisaSincronizar');
                         },1000)
                                
-                       });
-                novoCartao.prependTo('.mural');
-
+                       })
+           .on('change', '.opcoesDoCartao-radioCor', function(){
+                var origem = $(this);
+                if(origem.is('.opcoesDoCartao-radioCor')){
+                    origem.closest('.cartao').css('background-color',origem.val());
+                $('.mural').trigger('precisaSincronizar');
             }
+            
+        });    
+    
+function criaCartao(digitado, cor, finalidade){
+      
+    
+    if(digitado){
+                   var tipoCartao = decideTipoCartao(digitado)
+
+                    numeroDeCartoes++;
+                    var cores = [
+            { nome: 'Padrao', codigo: '#EBEF40' },
+            { nome: 'Importante', codigo: '#F05450' },
+            { nome: 'Tarefa', codigo: '#92C4EC' },
+            { nome: 'Inspiracao', codigo: '#76EF40' }
+        ];
+
+            var contexto = {
+                cartao: {
+                    id: 'cartao_'+ numeroDeCartoes,
+                    tipo: tipoCartao,
+                    cor: cor,
+                    conteudo: digitado
+                },
+                cores: cores
+            };
+            var renderizado = Mustache.render(template, contexto);
+            $('.mural').prepend(renderizado);
+
+    }
 
 }
 
@@ -96,50 +111,7 @@ function removeCartao(){
             cartao.remove();
         },400);
     }
-function opcoesDeCoresDoCartao(idDoCartao) {
-	var cores = [
-		{ nome: 'Padrao', codigo: '#EBEF40' },
-		{ nome: 'Importante', codigo: '#F05450' },
-		{ nome: 'Tarefa', codigo: '#92C4EC' },
-		{ nome: 'Inspiracao', codigo: '#76EF40' }
-	];
 
-	var opcoesDeCor = $('<div>').addClass('opcoesDoCartao-cores');
-
-	$.each(cores, function () {
-		var cor = this;
-
-		var idRadioCor = 'cor' + cor.nome + '-' + idDoCartao;
-
-		var radioCor = $('<input>')
-			.addClass('opcoesDoCartao-radioCor')
-			.val(cor.codigo)
-			.attr({ //setando varios atributos de uma única vez
-				type: 'radio',
-				id: idRadioCor,
-				name: 'corDoCartao' + idDoCartao
-			});
-        
-
-		var labelRadioCor = $('<label>')
-			.addClass('opcoesDoCartao-opcao opcoesDoCartao-cor')
-			.text(cor.nome)
-			.css('color', cor.codigo)
-			.attr('for', idRadioCor);
-
-		opcoesDeCor.append(radioCor).append(labelRadioCor);
-	});
-    opcoesDeCor.on('change', function(e){
-                var origem = $(e.target);
-            if(origem.is('.opcoesDoCartao-radioCor')){
-                origem.closest('.cartao').css('background-color',origem.val());
-            $('.mural').trigger('precisaSincronizar');
-            }
-            
-        });
-
-	return opcoesDeCor;
-}    
     
     
 return{
