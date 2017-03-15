@@ -129,7 +129,6 @@ function opcoesDeCoresDoCartao(idDoCartao) {
 
 		opcoesDeCor.append(radioCor).append(labelRadioCor);
 	});
-    
     opcoesDeCor.on('change', function(e){
                 var origem = $(e.target);
             if(origem.is('.opcoesDoCartao-radioCor')){
