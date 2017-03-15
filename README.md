@@ -61,3 +61,6 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js
 https://gist.github.com/alexandreaquiles/9856c420ae098ffcc7ddfd6aa3031519
 https://gist.github.com/alexandreaquiles/2b891bbfb133599db05c
+
+http://todomvc.com/
+http://try.jquery.com/
