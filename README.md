@@ -136,3 +136,32 @@ gulp <nome da tarefa> (executa uma task descrita no gulpfile.js (equivalente ao 
 
 
 npm init (cria o arquivo package.json) - para salvar as versões das bibliotecas que estão sendo usadas.
+
+
+22 requests
+1.2 Kbytes
+15 s
+
+
+chrome e firefox faz 6 conexões simultaneas.
+IE 10 - 8 conexoes simultaneas.
+
+
+
+instala a plugin 'del' e guarda no package.json. O -dev define que o plugin é só para ambiente de desenvolvimento.
+
+npm install del --save-dev 
+
+instala plugin que acrescenta os prefixos de css necessários para manter compatibilidade com browser antigos.
+npm install gulp-autoprefixer --save-dev
+site: https://github.com/postcss/autoprefixer/blob/master/README.md
+
+https://github.com/ai/browserslist - prefixo dos browser
+
+Concatenação
+gulp-usemin
+
+Minificação
+gulp-uglify
+gulp-minify-css
+

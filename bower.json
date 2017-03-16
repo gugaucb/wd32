@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "description": "Curso WD32",
+  "main": "gulpfile.js",
+  "authors": [
+    "Gustavo Costa <gugaucb@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/gugaucb/wd32",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

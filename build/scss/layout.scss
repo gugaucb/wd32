@@ -1,0 +1,26 @@
+
+
+#mudaLayout {
+    display: none;
+    @media(min-width: 560px){
+        display: inline-block;
+    }
+}
+
+
+@mixin tamanhoCartao($fonte, $largura){
+    font-size: $fonte;
+    width:$largura;
+    flex-basis:$largura;
+}
+.cartao--textoGrande{
+      @include tamanhoCartao(2em, 6em);    
+    }
+    
+    .cartao--textoMedio{
+         @include tamanhoCartao(1.5em, 9em); 
+    }
+    
+    .cartao--textoPequeno{
+         @include tamanhoCartao(1em, 11em); 
+    }
