@@ -165,3 +165,18 @@ Minificação
 gulp-uglify
 gulp-minify-css
 
+npm install bower - instala o bower
+bower init - inicializa o projeto
+bower list - lista as dependencias
+bower install - instala tudo que está listado no bower.json
+
+npm install -g yo - instala o yeoman
+
+
+npm install - g generator-webapp - instala o gerador webapp do yeoman que está listado no site http://yeoman.io/generators/
+
+
+yo webapp - cria o projeto com base no webapp
+
+
+gulp serve - levanta o servidor e apresenta o site no browser.
